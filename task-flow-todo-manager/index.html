@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Flow — To-Do Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">✓</div>
+        <div>
+          <h1>Task Flow</h1>
+          <span>To-Do Manager</span>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-item active" data-filter="all">All Tasks <span id="allNavCount">0</span></button>
+        <button class="nav-item" data-filter="active">Active <span id="activeNavCount">0</span></button>
+        <button class="nav-item" data-filter="completed">Completed <span id="completedNavCount">0</span></button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <p>Stay organized.<br>Get things done.</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">PRODUCTIVITY</p>
+          <h2>Good morning 👋</h2>
+          <p class="subtitle">Manage your tasks and keep your day on track.</p>
+        </div>
+        <button class="primary-btn" id="openAddBtn">+ Add Task</button>
+      </header>
+
+      <section class="stats">
+        <article class="stat-card">
+          <div class="stat-icon blue">✓</div>
+          <div><span>Total Tasks</span><strong id="totalCount">0</strong></div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-icon green">✓</div>
+          <div><span>Completed</span><strong id="completedCount">0</strong></div>
+        </article>
+        <article class="stat-card">
+          <div class="stat-icon orange">!</div>
+          <div><span>Pending</span><strong id="pendingCount">0</strong></div>
+        </article>
+      </section>
+
+      <section class="toolbar">
+        <div class="search-wrap">
+          <span>⌕</span>
+          <input id="searchInput" type="search" placeholder="Search tasks...">
+        </div>
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="active">Active</button>
+          <button class="filter-btn" data-filter="completed">Completed</button>
+        </div>
+      </section>
+
+      <section class="task-section">
+        <div class="section-heading">
+          <div>
+            <h3>My Tasks</h3>
+            <p id="taskSummary">0 tasks</p>
+          </div>
+          <button class="clear-btn" id="clearCompletedBtn">Clear completed</button>
+        </div>
+        <div id="taskList" class="task-list"></div>
+        <div id="emptyState" class="empty-state hidden">
+          <div class="empty-icon">✓</div>
+          <h3>No tasks here</h3>
+          <p>Add a task to start organizing your day.</p>
+          <button class="secondary-btn" id="emptyAddBtn">Create a Task</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop hidden" id="modalBackdrop">
+    <div class="modal">
+      <button class="modal-close" id="closeModalBtn">×</button>
+      <p class="eyebrow">TASK DETAILS</p>
+      <h2 id="modalTitle">Add a new task</h2>
+
+      <form id="taskForm">
+        <label>Task title
+          <input id="taskTitle" type="text" placeholder="e.g. Finish portfolio website" required maxlength="100">
+        </label>
+
+        <label>Description
+          <textarea id="taskDescription" placeholder="Add a short description..." rows="3" maxlength="250"></textarea>
+        </label>
+
+        <div class="form-grid">
+          <label>Due date
+            <input id="taskDate" type="date">
+          </label>
+          <label>Priority
+            <select id="taskPriority">
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="cancel-btn" id="cancelBtn">Cancel</button>
+          <button type="submit" class="primary-btn" id="saveBtn">Add Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
